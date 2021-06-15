@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::view(ruta,nombreDeVistasSinBladePuntPhp)->name(nombreRutaQueSeUsaEnRoute);
+Route::view("/" , "home")->name("agregar_consolas");
+Route::view("/ver_consolas" , "ver_consolas")->name("ver_consolas");
+Route::view("/ver_juegos" , "ver_juegos")->name("ver_juegos");
+Route::view("/agregar_juegos" , "agregar_juegos")->name("agregar_juegos");
