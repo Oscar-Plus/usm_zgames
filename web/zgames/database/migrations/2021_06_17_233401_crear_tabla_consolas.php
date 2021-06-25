@@ -14,7 +14,8 @@ class CrearTablaConsolas extends Migration
     public function up()
     {
         Schema::create('consolas', function (Blueprint $table) {
-            $table->id();
+            $table->id();//secuencias autoincrementales
+            //Autoincrementeales : claves unicas generadas automaticamente por el motor
             $table->string("nombre",150);
             $table->string("marca",50);
             $table->integer("anio");

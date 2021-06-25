@@ -16,7 +16,8 @@ class ConsolasController extends Controller
 
         return $marcas;
     }
-    //Esta consola va a ir a buscar todas las consolas que existen en la BD
+    //Esta función va a ir a buscar todas las consolas que existen en la BD
+    
     public function getConsolas(){
         // Equivalente a un select * from consolas
         $consolas = Consola::all();
@@ -24,15 +25,18 @@ class ConsolasController extends Controller
 
     }
 
-    public function crearConsola(){
+    //Una Request es un objeto php que permite acceder a las consolas que se mandaron desde la interfaz(desde el formulario)
+    //Cuando el metodo recibe cosas el REQUEST va en los parentesis
+
+    public function crearConsola(Request $request){
         // Equivalente a un insert
-
+        $input = $request->all(); //Genera un arreglo con todo lo que mandaron
         $consola = new Consola();
-        $consola->nombre = "Poly station";
-        $consola->marca  = "Poly"; 
-        $consola->anio   = 2003;
+        $consola->nombre = $input["nombre"];
+        $consola->marca  = $input["marca"]; 
+        $consola->anio   = $input["anio"];
 
-        $consola->save();
+        $consola->save(); // guardado en la BD
     }
 }
 
