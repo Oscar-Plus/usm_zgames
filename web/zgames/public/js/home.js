@@ -14,7 +14,11 @@ const cargarMarcas = async ()=>{
     });
 }
 
-cargarMarcas();
+// esto ejecuta un codigo asegurandose que el total de la pagina incluidos todos sus recursos este cargado antes de ejecutarS
+document.addEventListener("DOMContentLoaded",()=>{
+    cargarMarcas();
+});
+
 
 document.querySelector("#registrar-btn").addEventListener("click",async()=>{
     let nombre = document.querySelector("#nombre-txt").value;
@@ -28,9 +32,12 @@ document.querySelector("#registrar-btn").addEventListener("click",async()=>{
 
     //SOLO esta linea hace:
     //1.va al controlador, le pasa los datos
-    //2. El controlador
+    //2. El controlador crea el modelo
+    //3.el modelo ingresa en la BD
     let res = await crearConsola(consola);
 
-    Swal.fire("Consola creada", "Exito" , "info");
-
+    await Swal.fire("Consola creada", "Exito al crear una consola" , "info");
+    //la linea que viene despues del Swal.fire se va ajecutar solo cuando la persona aprete el ok
+    //Aqui a redirigir a otra pagina
+    window.location.href = "ver_consolas";
 });
