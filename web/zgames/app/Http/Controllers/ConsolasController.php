@@ -25,6 +25,16 @@ class ConsolasController extends Controller
 
     }
 
+    public function filtrarConsolas(Request $request){
+        $input  = $request->all();
+        $filtro = $input["filtro"];
+        //SELECT * FROM consolas WHERE marca = $filtro
+        $consolas = Consola::where("marca" , $filtro)->get();
+
+        return $consolas;
+
+    }
+
     //Una Request es un objeto php que permite acceder a las consolas que se mandaron desde la interfaz(desde el formulario)
     //Cuando el metodo recibe cosas el REQUEST va en los parentesis
 
@@ -38,6 +48,20 @@ class ConsolasController extends Controller
 
         $consola->save(); // guardado en la BD
     }
+
+    public function eliminarConsola(Request $request){
+        $input = $request->all();
+        $id = $input["id"];
+        //1. Ir a buscar el registro a la BD.
+        $consola = Consola::findOrFail($id);
+        //2. Para eliminar llamo al metodo delete
+        $consola->delete(); // DELETE FROM consolas WHERE id=1
+        
+        return "ok";
+
+
+    }
+
 }
 
 
