@@ -30,7 +30,7 @@ document.querySelector("#registrar-btn").addEventListener("click",async()=>{
         errores.push("debe ingresa un nombre");
     }else{
         // Validar si la consoolas existe en el sistema
-        let consolas = await getconsolas();
+        let consolas = await getConsolas();
         let consolaEncontrada = consolas.find(c=>c.nombre.toLowerCase() === nombre.toLowerCase());
         if(consolaEncontrada != undefined){
             errores.push("La consola ya existe");
