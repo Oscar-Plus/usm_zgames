@@ -41,9 +41,10 @@ document.querySelector("#registrar-btn").addEventListener("click",async()=>{
     }else if(+anio < 1958 ){ // + convertir texto a numero
         errores.push("El año es incorrecto");
     }
+    console.log(errores.length);
 
-    if(errores.lenght == 0){
-
+    if(errores.length == 0){
+        console.log("holas que pasa");
         let consola = {};
         consola.nombre = nombre;
         consola.marca  = marca;
@@ -69,6 +70,6 @@ document.querySelector("#registrar-btn").addEventListener("click",async()=>{
             html: errores.join("<br />")
         });
     }
-
+    
 
 });
