@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Consola extends Model
 {
     use HasFactory;
+    //Consola tiene muchos juegos
+    public function juegos(){
+        return $this->hasMany("App\Models\Juego", "consola_id");
+    }
 }
